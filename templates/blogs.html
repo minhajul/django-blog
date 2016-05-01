@@ -1,0 +1,37 @@
+{% extends 'master.html' %}
+
+{% block title %} Django || Show all blogs {% endblock %}
+
+{% block body %}
+
+    {% if blogs %}
+        {% for post in blogs %}
+            <div class="col-md-4">
+                 <h2><a href="/post/{{ post.id }}">{{ post.title|slice:":30" }}...</a></h2>
+                 <p>{{ post.text|slice:":350" }}...</p>
+                 <a href="/post/{{ post.id }}" class="readmore">Read More</a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No posts are available.</p>
+    {% endif %}
+
+    <hr>
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if blogs.has_previous %}
+                <a href="?page={{ blogs.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ blogs.number }} of {{ blogs.paginator.num_pages }}.
+            </span>
+
+            {% if blogs.has_next %}
+                <a href="?page={{ blogs.next_page_number }}">next</a>
+            {% endif %}
+        </span>
+    </div>
+
+{% endblock %}

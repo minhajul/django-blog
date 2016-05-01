@@ -8,17 +8,13 @@
 
 {% block body %}
 
-    <div class="container">
-        <div class="row">
-            {% if post %}
-                <div class="col-md-4">
-                     <h2><a href="/post/{{ post.id }}">{{ post.title }}</a></h2>
-                     <p>{{ post.text }}</p>
-                </div>
-            {% else %}
-                    <p>No post are available.</p>
-            {% endif %}
+    {% if post %}
+        <div class="col-md-6 col-md-offset-3">
+             <h2><a href="/post/{{ post.id }}">{{ post.title }}</a></h2>
+             <p>{{ post.text }}</p>
         </div>
-    </div>
+    {% else %}
+        <p>No post are available.</p>
+    {% endif %}
 
 {% endblock %}
