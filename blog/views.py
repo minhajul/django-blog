@@ -9,7 +9,7 @@ def home(request):
 
 # Show blog view with all blog
 def blogs(request):
-    blogs = Post.objects.all()
+    blogs = Post.objects.all().order_by('-id')
     paginator = Paginator(blogs, 6)
     page = request.GET.get('page')
     try:
