@@ -25,3 +25,7 @@ def blogs(request):
 def details(request, id):
     post = get_object_or_404(Post, pk=id)
     return render(request, 'details.html', {'post': post})
+
+# Show contact view
+def contact(request):
+    return render(request, 'contact.html')

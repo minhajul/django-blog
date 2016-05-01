@@ -1,0 +1,30 @@
+
+{% extends 'master.html' %}
+
+
+{% block title %} Django || Contact Page{% endblock %}
+
+
+{% block body %}
+
+    <div class="contact-form">
+        <div class="col-md-12">
+            <form role="form">
+                <div class="form-group">
+                    <label for="name">Name : </label>
+                    <input type="text" class="form-control" name="name" placeholder="Name">
+                </div>
+                <div class="form-group">
+                    <label for="password">Email Address :</label>
+                    <input type="email" class="form-control" name="email" placeholder="Email">
+                </div>
+                <div class="form-group">
+                     <textarea class="form-control" cols="4" rows="5" name="message" placeholder="Message"></textarea>
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+        </div>
+    </div>
+
+
+{% endblock %}
