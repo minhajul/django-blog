@@ -9,10 +9,13 @@
             {% if blogs %}
                 {% for post in blogs %}
                     <div class="col-md-4">
-                         <h2><a href="/post/{{ post.id }}">{{ post.title|slice:":30" }}...</a></h2>
-                         <p>{{ post.text|slice:":350" }}...</p>
-                         <a href="/post/{{ post.id }}" class="readmore">Read More</a>
+                        <h2><a href="/post/{{ post.id }}">{{ post.title|slice:":25" }}...</a></h2>
+                        <p>{{ post.text|slice:":350" }}...</p>
+                        <p>
+                            <a href="/post/{{ post.id }}" role="button">View details &raquo;</a>
+                        </p>
                     </div>
+                    <!-- end col-md-4 -->
                 {% endfor %}
             {% else %}
                 <p>No posts are available.</p>
