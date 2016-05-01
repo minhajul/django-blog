@@ -23,5 +23,6 @@ urlpatterns = [
     url(r'^blogs/', blogs, name = 'blogs'),
     url(r'^contact/', contact, name = 'contact'),
     url(r'^login/', login, name = 'login'),
+    url(r'^logout/', 'django.contrib.auth.views.logout', name = 'logout', kwargs={'next_page': '/'}),
     url(r'^admin/', admin.site.urls),
 ]
