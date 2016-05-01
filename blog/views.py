@@ -1,6 +1,9 @@
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib import messages
 from .models import Post
+from .forms import ContactForm
+
 
 # Create home view with 3 latest blog.
 def home(request):
@@ -28,4 +31,15 @@ def details(request, id):
 
 # Show contact view
 def contact(request):
-    return render(request, 'contact.html')
+    if request.method == "POST":
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            contact = form.save(commit = False)
+            contact.save()
+            messages.success(request, "Thanks for your feedback!")
+            return redirect('blog.views.contact')
+    else:
+        form = ContactForm()
+    return render(request, 'contact.html', {'form': form})
+
+
