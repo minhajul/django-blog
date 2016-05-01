@@ -32,8 +32,13 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li><a href="/blogs">Blogs</a></li>
-            <li><a href="# ">Projects</a></li>
+            <li><a href="#">Projects</a></li>
             <li><a href="/contact">Contact</a></li>
+            {% if user.is_authenticated %}
+              <li><a href="">{{ user.username }}</a></li>
+            {% else %}
+                <li><a href="/login">Login</a></li>
+            {% endif %}
           </ul>
         </div><!-- /.nav-collapse -->
       </div><!-- /.container -->
@@ -42,6 +47,12 @@
     <div class="container">
 
       <div class="row row-offcanvas row-offcanvas-right">
+
+          {% if messages %}
+              {% for msg in messages %}
+                  <p class="alert alert-success">{{ msg.message }}</p>
+              {% endfor %}
+          {% endif %}
 
           {% block body %}
 
