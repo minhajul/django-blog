@@ -1,7 +1,7 @@
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
-from django.contrib.auth import authenticate, logout
+from django.contrib.auth import authenticate, login, logout
 from .models import Post
 from .forms import ContactForm
 
@@ -47,14 +47,18 @@ def contact(request):
     return render(request, 'contact.html', {'form': form})
 
 # Show login view
-def login(request):
+def login_user(request):
     if request.method == "POST":
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(username=username, password=password)
         if user is not None:
-            # messages.success(request, "You have successfully logged in!")
-            return redirect('/')
+            if user.is_active:
+                login(request, user)
+                return redirect('/')
+            else:
+                messages.error(request, "Something wrong!")
+                return redirect('login')
         else:
             messages.error(request, "Authentication Failed!")
             return render(request, 'login.html', {})
