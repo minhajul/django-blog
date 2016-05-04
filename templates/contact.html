@@ -8,11 +8,15 @@
 {% block body %}
 
     <div class="contact-form">
-        <div class="col-md-12">
+        <div class="col-md-8 col-md-offset-2">
+
+            <h1 style="text-align: center;">Feel free to send us feedback!</h1>
+
+            <hr>
 
             {% if messages %}
                 {% for msg in messages %}
-                    <p class="alert alert-success">{{ msg.message }}</p>
+                    <p class="alert alert-success">{{ message }}</p>
                 {% endfor %}
             {% endif %}
 
