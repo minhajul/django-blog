@@ -11,7 +11,7 @@
     {% if post %}
         <div class="col-md-8 col-md-offset-2">
              <h2>{{ post.title }}</h2>
-             <p>{{ post.text }}</p>
+             <p>{{ post.text|linebreaks }}</p>
         </div>
     {% else %}
         <p>No post are available.</p>
