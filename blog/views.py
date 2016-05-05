@@ -5,26 +5,37 @@ from django.contrib.auth import authenticate, login, logout
 from .models import Post
 from .forms import ContactForm
 
+from django.views import generic
 
 # Create home view with 3 latest blog.
 def home(request):
     blogs = Post.objects.all().order_by('-id')[:6]
     return render(request, 'home.html', {'blogs': blogs})
 
-
 # Show blog view with all blog
-def blogs(request):
-    blogs = Post.objects.all().order_by('-id')
-    paginator = Paginator(blogs, 6)
-    page = request.GET.get('page')
-    try:
-        blogs = paginator.page(page)
-    except PageNotAnInteger:
-        blogs = paginator.page(1)
-    except EmptyPage:
-        blogs = paginator.page(paginator.num_pages)
+# def blogs(request):
+#     blogs = Post.objects.all().order_by('-id')
+#     paginator = Paginator(blogs, 6)
+#     page = request.GET.get('page')
+#     try:
+#         blogs = paginator.page(page)
+#     except PageNotAnInteger:
+#         blogs = paginator.page(1)
+#     except EmptyPage:
+#         blogs = paginator.page(paginator.num_pages)
+#
+#     return render(request, 'blogs.html', {'blogs': blogs})
 
-    return render(request, 'blogs.html', {'blogs': blogs})
+
+class BlogView(generic.ListView):
+    model = Post
+    template_name = 'blogs.html'
+    context_object_name = 'blogs'
+    paginate_by = 6
+
+    def get_paginate_by(self, queryset):
+        blogs = self.request.GET.get('page', self.paginate_by)
+        return blogs
 
 
 # Show blog details view

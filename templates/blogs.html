@@ -28,21 +28,23 @@
     <hr>
 
     <div class="col-md-4 col-md-offset-4">
-        <div class="paginator">
-            <span class="step-links" style="text-align: center !important;">
-                {% if blogs.has_previous %}
-                    <a href="?page={{ blogs.previous_page_number }}">previous</a>
-                {% endif %}
+       {% if is_paginated %}
+            <div class="paginator">
+                <span class="step-links" style="text-align: center !important;">
+                    {% if blogs.has_previous %}
+                        <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                    {% endif %}
 
-                <span class="current">
-                    Page {{ blogs.number }} of {{ blogs.paginator.num_pages }}
+                    <span class="current">
+                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                    </span>
+
+                    {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}">next</a>
+                    {% endif %}
                 </span>
-
-                {% if blogs.has_next %}
-                    <a href="?page={{ blogs.next_page_number }}">next</a>
-                {% endif %}
-            </span>
-        </div>
+            </div>
+        {% endif %}
     </div>
 
 {% endblock %}
