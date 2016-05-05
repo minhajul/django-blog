@@ -7,13 +7,13 @@
 
 {% block body %}
 
-    {% if post %}
+    {% if blog %}
         <div class="col-md-8 col-md-offset-2">
-             <h2>{{ post.title }}</h2>
-             <p>{{ post.text|linebreaks }}</p>
+             <h2>{{ blog.title }}</h2>
+             <p>{{ blog.text|linebreaks }}</p>
         </div>
     {% else %}
-        <p>No post are available.</p>
+        <p>No blog are available.</p>
     {% endif %}
 
 

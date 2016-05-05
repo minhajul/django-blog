@@ -1,4 +1,3 @@
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
@@ -12,21 +11,7 @@ def home(request):
     blogs = Post.objects.all().order_by('-id')[:6]
     return render(request, 'home.html', {'blogs': blogs})
 
-# Show blog view with all blog
-# def blogs(request):
-#     blogs = Post.objects.all().order_by('-id')
-#     paginator = Paginator(blogs, 6)
-#     page = request.GET.get('page')
-#     try:
-#         blogs = paginator.page(page)
-#     except PageNotAnInteger:
-#         blogs = paginator.page(1)
-#     except EmptyPage:
-#         blogs = paginator.page(paginator.num_pages)
-#
-#     return render(request, 'blogs.html', {'blogs': blogs})
-
-
+# Show Blog page with pagination
 class BlogView(generic.ListView):
     model = Post
     template_name = 'blogs.html'
@@ -34,14 +19,19 @@ class BlogView(generic.ListView):
     paginate_by = 6
 
     def get_paginate_by(self, queryset):
-        blogs = self.request.GET.get('page', self.paginate_by)
-        return blogs
+        return self.request.GET.get('page', self.paginate_by)
 
 
 # Show blog details view
-def details(request, id):
-    post = get_object_or_404(Post, pk=id)
-    return render(request, 'details.html', {'post': post})
+class BlogDetailsView(generic.DetailView):
+    model = Post
+    template_name = 'details.html'
+    context_object_name = 'blog'
+
+
+# def details(request, id):
+#     post = get_object_or_404(Post, pk=id)
+#     return render(request, 'details.html', {'post': post})
 
 
 # Show contact view

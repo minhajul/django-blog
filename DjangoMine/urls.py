@@ -15,13 +15,14 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from blog.views import home, details, contact, login_user, BlogView
+from blog.views import home, contact, login_user, BlogView, BlogDetailsView
 
 urlpatterns = [
     url(r'^$', home, name = 'home'),
-    url(r'^post/(?P<id>[0-9]+)/$', details, name = 'details'),
+    # url(r'^post/(?P<id>[0-9]+)/$', details, name = 'details'),
     # url(r'^blog/', blogs, name = 'blogs'),
     url(r'^blog/', BlogView.as_view(), name = 'blogs'),
+    url(r'^post/(?P<pk>[0-9]+)/$', BlogDetailsView.as_view(), name = 'details'),
     url(r'^contact/', contact, name = 'contact'),
     url(r'^login/', login_user, name = 'login'),
     url(r'^logout/', 'django.contrib.auth.views.logout', name = 'logout', kwargs={'next_page': '/'}),
