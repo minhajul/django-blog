@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from bs4 import BeautifulSoup
 import urllib
 
@@ -17,6 +17,5 @@ def news_views(request):
         new_news = {'title': title, 'news_summary': news_summary}
         news.update(new_news)
 
-    # news.update(new_news)
     return render(request, 'news.html', {'news': news})
 
