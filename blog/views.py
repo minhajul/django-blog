@@ -28,12 +28,6 @@ class BlogDetailsView(generic.DetailView):
     template_name = 'details.html'
     context_object_name = 'blog'
 
-
-# def details(request, id):
-#     post = get_object_or_404(Post, pk=id)
-#     return render(request, 'details.html', {'post': post})
-
-
 # Show contact view
 def contact(request):
     if request.method == "POST":

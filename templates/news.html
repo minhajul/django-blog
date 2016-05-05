@@ -1,0 +1,26 @@
+
+{% extends 'master.html' %}
+
+
+{% block title %} Django || News Page {% endblock %}
+
+
+{% block body %}
+
+    <div class="col-md-12">
+        <div class="row">
+
+            <h1>All news goes here</h1>
+
+            {% for value in news %}
+                <div class="col-md-4">
+                    <h2>{{ value['title'] }}</h2>
+                    <p>{{ value.news_summary }}</p>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+
+
+{% endblock %}
