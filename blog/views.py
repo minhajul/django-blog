@@ -6,6 +6,7 @@ from .forms import ContactForm
 
 from django.views import generic
 
+
 # Create home view with 3 latest blog.
 def home(request):
     blogs = Post.objects.all().order_by('-id')[:6]

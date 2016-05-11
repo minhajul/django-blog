@@ -1,4 +1,4 @@
-from django.conf.urls import url, include
+from django.conf.urls import url
 from django.contrib import admin
 from blog.views import home, contact, login_user, BlogView, BlogDetailsView
 from news.views import news_views
