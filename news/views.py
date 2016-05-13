@@ -1,9 +1,11 @@
 from django.shortcuts import render
+from django.views.decorators.cache import cache_page
 from bs4 import BeautifulSoup
 import urllib
 
 
 # Create your views here.
+@cache_page(60 * 15)
 def news_views(request):
     news = []
     link = "http://prothom-alo.com/"
