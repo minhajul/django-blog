@@ -10,5 +10,7 @@ urlpatterns = [
 
     url(r'', include('login.urls'), name = 'login'),
 
+    url(r'^api/', include('api.urls'), name = 'api'),
+
     url(r'^admin/', admin.site.urls),
 ]
