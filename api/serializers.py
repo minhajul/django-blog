@@ -7,6 +7,8 @@ class PostModelSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Post
         fields = [
+            'id',
             'title',
             'text',
         ]
+        
