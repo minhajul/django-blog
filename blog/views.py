@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import Post
 from .forms import ContactForm
-
 from django.views import generic
 
 
@@ -12,7 +11,7 @@ def home(request):
     return render(request, 'home.html', {'blogs': blogs})
 
 # Show Blog page with pagination
-class BlogView(generic.ListView):
+class  BlogView(generic.ListView):
     model = Post
     template_name = 'blogs.html'
     context_object_name = 'blogs'
@@ -40,3 +39,4 @@ def contact(request):
     else:
         form = ContactForm()
     return render(request, 'contact.html', {'form': form})
+

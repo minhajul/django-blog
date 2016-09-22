@@ -87,9 +87,9 @@ WSGI_APPLICATION = 'DjangoMine.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE'  : 'django.db.backends.mysql',
-        'NAME'    : 'crud',
-        'USER'    : 'root',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'crud',
+        'USER': 'root',
         'PASSWORD': 'root',
         'HOST': '127.0.0.1',
         'PORT': '3306',
@@ -145,7 +145,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 STATIC_URL = '/static/'
 
-# Extra places for collectstatic to find static files.
+# Extra places for collect static to find static files.
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )

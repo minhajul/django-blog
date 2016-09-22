@@ -1,6 +1,6 @@
 from rest_framework import serializers
-
 from blog.models import Post
+from blog.models import Contact
 
 
 class PostModelSerializer(serializers.HyperlinkedModelSerializer):
@@ -9,6 +9,16 @@ class PostModelSerializer(serializers.HyperlinkedModelSerializer):
         fields = [
             'id',
             'title',
-            'text',
+            'text'
         ]
-        
+
+
+class ContactModelSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Contact
+        field = [
+            'id',
+            'name',
+            'email',
+            'message'
+        ]

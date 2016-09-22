@@ -19,3 +19,6 @@ def news_views(request):
         latest = {'title': title, 'news_summary': news_summary}
         news.append(latest)
     return render(request, 'news.html', {'news': news})
+
+
+
