@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from rest_framework import generics
+from rest_framework.permissions import IsAdminUser
 from blog.models import Post
 from blog.models import Contact
 from django.contrib.auth.models import User
@@ -21,4 +22,6 @@ class ContactListView(generics.ListAPIView):
 class UserListView(generics.ListAPIView):
     queryset = User.objects.all()
     serializer_class = UserModelSerializer
+    permission_classes = (IsAdminUser,)
+
 
