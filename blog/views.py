@@ -10,8 +10,9 @@ def home(request):
     blogs = Post.objects.all().order_by('-id')[:6]
     return render(request, 'home.html', {'blogs': blogs})
 
+
 # Show Blog page with pagination
-class  BlogView(generic.ListView):
+class BlogView(generic.ListView):
     model = Post
     template_name = 'blogs.html'
     context_object_name = 'blogs'
@@ -26,6 +27,7 @@ class BlogDetailsView(generic.DetailView):
     model = Post
     template_name = 'details.html'
     context_object_name = 'blog'
+
 
 # Show contact view
 def contact(request):

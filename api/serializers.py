@@ -4,7 +4,7 @@ from blog.models import Contact
 from django.contrib.auth.models import User
 
 
-class PostModelSerializer(serializers.HyperlinkedModelSerializer):
+class PostModelSerializer (serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Post
         fields = [
@@ -14,7 +14,7 @@ class PostModelSerializer(serializers.HyperlinkedModelSerializer):
         ]
 
 
-class ContactModelSerializer(serializers.HyperlinkedModelSerializer):
+class ContactModelSerializer (serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Contact
         fields = [
@@ -25,7 +25,7 @@ class ContactModelSerializer(serializers.HyperlinkedModelSerializer):
         ]
 
 
-class UserModelSerializer(serializers.HyperlinkedModelSerializer):
+class UserModelSerializer (serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
         fields = [
@@ -38,5 +38,3 @@ class UserModelSerializer(serializers.HyperlinkedModelSerializer):
             'is_staff',
             'is_superuser'
         ]
-
-

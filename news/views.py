@@ -20,5 +20,3 @@ def news_views(request):
         news.append(latest)
     return render(request, 'news.html', {'news': news})
 
-
-
